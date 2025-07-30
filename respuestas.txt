@@ -1,0 +1,51 @@
+Parte 3: Preguntas de Diseño (30 minutos)
+Descripción: Responder a las siguientes preguntas de diseño de software:
+
+- ¿Qué patrones de diseño utilizarías para implementar la lógica de negocio en una aplicación .NET y por qué?
+RTA: 
+hay varios patrones de diseño pero el que mas he utilizado y con el que mas me encontrado en proyectos
+ que ya llevan andando un tiempo es el patron repository.
+lo primero que debo decir para usar un patron es poder ocultar la logica de negocio y hacer a la api
+ escalable, mantenible y facil de entender.
+ al usar el partron repository obtenemos: Abstrae el acceso a datos facil, permitiendo cambiar el proveedor
+  (por ejemplo, de SQL a MongoDB) sin afectar la lógica de negocio.
+- Limpia la capa de servicios de detalles técnicos de persistencia.
+pero tambien hay otros como son:
+Patrón de Servicios (Service Layer)
+¿Por qué usarlo? Centraliza la lógica de negocio y separa responsabilidades entre la capa de presentación 
+y el acceso a datos.
+- Ideal para mantener las reglas del negocio fuera de los controladores.
+- Fomenta pruebas unitarias más sencillas.
+Patrón de Unidad de Trabajo (Unit of Work)
+- ¿Por qué usarlo? Coordina transacciones múltiples, asegurando que todas las operaciones se completen correctamente
+ o se reviertan.
+- Suele combinarse con el patrón Repositorio.
+
+CQRS (Command Query Responsibility Segregation)
+- ¿Por qué usarlo? Separa operaciones de lectura (queries) y escritura (commands), lo que mejora 
+rendimiento y escalabilidad.
+- Útil en aplicaciones que manejan grandes volúmenes de datos o requieren alta disponibilidad.
+
+Domain-Driven Design (DDD)
+- ¿Por qué usarlo? Organiza la lógica de negocio alrededor del dominio real del problema. 
+Promueve entidades ricas, agregados, y objetos de valor.
+- Perfecto para sistemas complejos donde las reglas del negocio son el centro.
+************************************************************************************
+- Explica cómo manejarías la autenticación y autorización en una API RESTful.
+RTA: Bueno en .Net se maneja la libreria autentication.JwtBearer que basicamente nos ayuda a generar un JWT
+ cuando un usuario se intenta autenticar generalmente con usuario y password si la validacion es correcta el 
+ servidor genera el JWT firmado y se envia al cliente en la respuesta que a su vez generalmente se almacena 
+ en la web en el sesion storage o local storage que luego se usuara para para validaciones atravez de la cabecera 
+ Authorizaton: Bearer 
+ para el tema de autorizacion que basicamente es determinar el cliente que puede hacer en la aplicacion se 
+ hace atravez del claims del token donde se envian los roles y permisos.
+ Adicional comentar Que JWT nos permite generar fechas de expiracion para tener mejor seguridad.
+
+
+************************************************************************************
+- ¿Cómo asegurarías que tu API sea escalable y mantenible a largo plazo?
+RTA: Codigo limpio es lo primero que se me viene a la cabeza con una arquitectura en capas y inplementacion del
+paradigma solid, uso de inyecion de dependencias y pruebas unitaraias para cada entidad.
+Modelado con una unicaresponsabilidad y reutilizacion de codigo.
+
+************************************************************************************
